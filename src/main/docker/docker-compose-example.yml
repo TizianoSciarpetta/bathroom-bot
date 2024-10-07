@@ -8,8 +8,8 @@ services:
       - postgres
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/PoopDB
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=00BigHead00
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
   postgres:
@@ -18,9 +18,9 @@ services:
     restart: always
     ports:
       - '5432:5432'
-    #volumes:
+      #volumes:
       #- ./pgdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=PoopDB
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=00BigHead00
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}

@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### File to exclude ###
+src/main/resources/application.properties
+src/main/docker/docker-compose.yml
