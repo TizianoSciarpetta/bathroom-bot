@@ -23,6 +23,7 @@ Ever wondered who in your group is the King (or Queen) of the bathroom breaks? L
 
 - Java 17+
 - Maven 3.6+
+- Docker and Docker Compose
 - A registered Telegram Bot Token (get it from [BotFather](https://core.telegram.org/bots#botfather))
 
 ### Installation
@@ -45,19 +46,20 @@ Ever wondered who in your group is the King (or Queen) of the bathroom breaks? L
     mvn clean install
     ```
 
-4. Rename and configure `application-example.properties` into `application.properties` file:
+4. In the root of the project, create a `.env` file and define the following environment variables:
 
-    ```properties
-    telegram.bot.username=YOUR_TELEGRAM_BOT_USERNAME
-    telegram.bot.token=YOUR_TELEGRAM_BOT_TOKEN
-    spring.datasource.username=YOUR_DATABASE_USERNAME
-    spring.datasource.password=YOUR_DATABASE_PASSWORD
+    ```dotenv
+    POSTGRES_DB=YOUR_DATABASE_NAME
+    POSTGRES_USER=YOUR_DATABASE_USERNAME
+    POSTGRES_PASSWORD=YOUR_DATABASE_PASSWORD
+    TELEGRAM_BOT_USERNAME=YOUR_TELEGRAM_BOT_USERNAME
+    TELEGRAM_BOT_TOKEN=YOUR_TELEGRAM_BOT_TOKEN
     ```
 
-5. Run the application:
+5. To deploy the project, run the following command in the root directory:
 
     ```bash
-    mvn spring-boot:run
+    docker-compose up --build
     ```
 
 ### Usage
@@ -65,7 +67,7 @@ Ever wondered who in your group is the King (or Queen) of the bathroom breaks? L
 1. Add the bot to your Telegram group.
 2. Members can log their *bathroom breaks* by sending the poop emoji (💩) as a message.
 3. Use the appropriate buttons to check the daily, monthly, or all-time rankings.
-
+****
 ## 🎯 How It Works
 
 When a member sends the poop emoji, the bot records the entry with the current timestamp and stores it in the database. The leaderboards are dynamically updated, so everyone can keep an eye on the competition!
